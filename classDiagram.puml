@@ -1,0 +1,90 @@
+@startuml
+
+class Rocket {
+    - double initialMass
+    - FuelTank fuelTank
+    - Crew crew
+    - double initialAltitude
+    + Rocket(double initialMass, FuelTank fuelTank, Crew crew, double initialAltitude)
+    + double getInitialMass()
+    + FuelTank getFuelTank()
+    + Crew getCrew()
+    + double getInitialAltitude()
+    + void consumeFuel(double time)
+}
+
+class FuelTank {
+    - double capacity
+    - double consumptionRate
+    + FuelTank(double capacity, double consumptionRate)
+    + double getCapacity()
+    + double getConsumptionRate()
+    + double getRemainingFuel(double time)
+}
+
+class Crew {
+    - int numberOfAstronauts
+    - double totalMass
+    + Crew(int numberOfAstronauts, double totalMass)
+    + int getNumberOfAstronauts()
+    + double getTotalMass()
+}
+
+class Engine {
+    - double thrust
+    - double efficiency
+    + Engine(double thrust, double efficiency)
+    + double calculateForce(double mass)
+}
+
+class Simulator {
+    - Rocket rocket
+    - Engine engine
+    - DifferentialEquationSolver solver
+    - double orbitAltitude
+    + Simulator(Rocket rocket, Engine engine, DifferentialEquationSolver solver, double orbitAltitude)
+    + double simulateLaunch()
+}
+
+interface DifferentialEquationSolver {
+    + double solve(double initialMass, double fuelCapacity, double consumptionRate, double thrust, double efficiency, double initialAltitude, double orbitAltitude)
+}
+
+class EulerSolver {
+    + double solve(double initialMass, double fuelCapacity, double consumptionRate, double thrust, double efficiency, double initialAltitude, double orbitAltitude)
+}
+
+class RungeKuttaSolver {
+    + double solve(double initialMass, double fuelCapacity, double consumptionRate, double thrust, double efficiency, double initialAltitude, double orbitAltitude)
+}
+
+class UserInterface {
+    - Scanner scanner
+    + UserInterface()
+    + double getInitialAltitude()
+    + void displayResults(double time)
+}
+
+interface Observer {
+    + void update(String message)
+}
+
+class Subject {
+    - List<Observer> observers
+    + void addObserver(Observer observer)
+    + void removeObserver(Observer observer)
+    + void notifyObservers(String message)
+}
+
+Rocket --|> Subject
+Rocket "1" *-- "1" FuelTank
+Rocket "1" *-- "1" Crew
+Simulator "1" *-- "1" Rocket
+Simulator "1" *-- "1" Engine
+Simulator "1" *-- "1" DifferentialEquationSolver
+DifferentialEquationSolver <|.. EulerSolver
+DifferentialEquationSolver <|.. RungeKuttaSolver
+Subject "1" o-- "0..*" Observer
+UserInterface "1" *-- "1" Scanner
+
+@enduml
