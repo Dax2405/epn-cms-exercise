@@ -4,7 +4,6 @@ public class RocketBuilder {
     private Double initialMass;
     private FuelTank fuelTank;
     private Crew crew;
-    private Double initialAltitude;
     private ArrayList<Engine> engines;
     private Double height;
     private Double diameter;
@@ -21,11 +20,6 @@ public class RocketBuilder {
 
     public RocketBuilder setCrew(Crew crew) {
         this.crew = crew;
-        return this;
-    }
-
-    public RocketBuilder setInitialAltitude(Double initialAltitude) {
-        this.initialAltitude = initialAltitude;
         return this;
     }
 
