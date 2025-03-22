@@ -1,3 +1,4 @@
+package rocket.engine;
 
 public class Engine {
     private Double thrust;

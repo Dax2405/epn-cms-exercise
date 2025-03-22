@@ -1,8 +1,10 @@
+package rocket.crew;
 
-public abstract class Payload {
+public class Astronaut {
+
     private Double mass;
 
-    public Payload(Double mass) {
+    public Astronaut(Double mass) {
         this.mass = mass;
     }
 

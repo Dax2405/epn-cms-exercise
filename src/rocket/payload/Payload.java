@@ -1,8 +1,9 @@
-public class Astronaut {
+package rocket.payload;
 
+public abstract class Payload {
     private Double mass;
 
-    public Astronaut(Double mass) {
+    public Payload(Double mass) {
         this.mass = mass;
     }
 

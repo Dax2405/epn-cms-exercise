@@ -1,4 +1,11 @@
+package rocket;
+
 import java.util.ArrayList;
+
+import rocket.crew.Crew;
+import rocket.engine.Engine;
+import rocket.fuel.FuelTank;
+import rocket.payload.Payload;
 
 public class RocketBuilder {
     private Double initialMass;

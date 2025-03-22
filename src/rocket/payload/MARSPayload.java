@@ -1,3 +1,5 @@
+package rocket.payload;
+
 public class MARSPayload extends Payload {
 
     public MARSPayload() {

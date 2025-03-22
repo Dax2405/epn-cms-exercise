@@ -1,6 +1,10 @@
+package solver;
+
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.analysis.solvers.BrentSolver;
 import org.apache.commons.math3.analysis.solvers.UnivariateSolver;
+
+import rocket.Rocket;
 
 public class VerticalSolver implements DifferentialEquationSolver {
 
